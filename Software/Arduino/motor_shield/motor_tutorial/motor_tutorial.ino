@@ -20,7 +20,7 @@ void loop(){
   //forward @ full speed
   digitalWrite(12, HIGH); //Establishes forward direction of Channel A
   digitalWrite(9, LOW);   //Disengage the Brake for Channel A
-  analogWrite(3, 255);   //Spins the motor on Channel A at full speed
+  analogWrite(3, 123);   //Spins the motor on Channel A at full speed
   
   delay(3000);
   

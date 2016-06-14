@@ -7,18 +7,38 @@ void setup()
 
 void loop()
 {
-  while(Serial.available())
-  {//while there is data available on the serial monitor
-    message+=char(Serial.read());//store string from serial command
-  }
-  if(!Serial.available())
-  {
-    if(message!="")
-    {//if data is available
-      Serial.println(message); //show the data
-      message=""; //clear the data
+  
+  if (Serial.available() > 0) {
+  int inByte = Serial.read();
+    // do something different depending on the character received.
+    // The switch statement expects single number values for each case;
+    // in this exmaple, though, you're using single quotes to tell
+    // the controller to get the ASCII value for the character.  For
+    // example 'a' = 97, 'b' = 98, and so forth:
+
+    switch (inByte) {
+      case 'a':
+        digitalWrite(2, HIGH);
+        break;
+      case 'b':
+        digitalWrite(3, HIGH);
+        break;
+      case 'c':
+        digitalWrite(4, HIGH);
+        break;
+      case 'd':
+        digitalWrite(5, HIGH);
+        break;
+      case 'e':
+        digitalWrite(6, HIGH);
+        break;
+      default:
+        // turn all the LEDs off:
+        for (int thisPin = 2; thisPin < 7; thisPin++) {
+          digitalWrite(thisPin, LOW);
+        }
     }
-  }
-  delay(5000); //delay
 }
+}
+
     
